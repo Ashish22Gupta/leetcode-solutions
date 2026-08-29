@@ -1,21 +1,15 @@
-public class Solution
-{
-    public int[] TwoSum(int[] nums, int target)
-    {
-        Dictionary<int, int> map = new Dictionary<int, int>();
-
-        for (int i = 0; i < nums.Length; i++)
-        {
-            int needed = target - nums[i];
-
-            if (map.ContainsKey(needed))
-            {
-                return new int[] { map[needed], i };
+public class Solution {
+    public int[] TwoSum(int[] nums, int target) {
+        int[] arr = nums;
+        int i, j;
+        int maxlength = arr.Length;
+        for (i = 0; i < maxlength; i++) {
+            for (j = i + 1; j < maxlength; j++) {
+                if (arr[i] + arr[j] == target) {
+                    return new int[] { i, j };
+                }
             }
-
-            map[nums[i]] = i;
         }
-
-        return new int[] { };
+        return null;
     }
 }
