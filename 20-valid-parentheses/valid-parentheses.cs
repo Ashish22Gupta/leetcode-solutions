@@ -1,37 +1,25 @@
 public class Solution {
     public bool IsValid(string s) {
-        int i;
-        Stack<Char> stack = new Stack<Char>();
+        int i, top = -1;
+        char[] stack = new char[s.Length];
         for(i=0;i<s.Length;i++){
             char ch=s[i];
             Console.Write(ch);
             if(ch=='(' || ch=='{' || ch=='['){
-                stack.Push(ch);
-            }
-
-            if(ch==')' || ch=='}' || ch==']'){
-                if(stack.Count==0){
+                top++;
+                stack[top]=ch;
+            }else{
+                if(top==-1){
                     return false;
                 }
-                else{
-                    char top = stack.Peek();
-                    if ((top == '(' && ch == ')') ||
-                        (top == '{' && ch == '}') ||
-                        (top == '[' && ch == ']'))
-                    {
-                        stack.Pop();
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                char last = stack[top];
+                if((last=='(' && ch==')')|| last=='[' && ch==']'|| last=='{' && ch=='}'){
+                    top--;
+                }else{
+                    return false;
                 }
             }
         }
-        if(stack.Count==0){
-            return true;
-        }else{
-            return false;
-        }
+        return top == -1;
     }
 }
