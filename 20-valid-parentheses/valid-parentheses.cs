@@ -1,6 +1,6 @@
 public class Solution {
     public bool IsValid(string s) {
-        int i, top = -1;
+        int i, top=-1;
         char[] stack = new char[s.Length];
         for(i=0;i<s.Length;i++){
             char ch=s[i];
@@ -20,6 +20,10 @@ public class Solution {
                 }
             }
         }
-        return top == -1;
+        if(top==-1){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
