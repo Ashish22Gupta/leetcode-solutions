@@ -1,9 +1,10 @@
 public class Solution {
     public int RomanToInt(string s) {
-        int i, temp=0, num1=0, num2=0;
+        int i, temp=0;
         char number;
         char[] arr = new char[s.Length];
         for(i=0;i<s.Length;i++){
+            int num1=0, num2=0;
             number=s[i];
             if(number=='I'){
                 num1=1;
