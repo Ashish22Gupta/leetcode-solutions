@@ -1,6 +1,6 @@
 public class Solution {
     public string LongestCommonPrefix(string[] strs) {
-        int i, j, templength=0;
+        int i, j, templength=0, prefixLength=strs[0].Length;
         string name;
         char[] arr = new char[strs[0].Length];
         
@@ -10,10 +10,10 @@ public class Solution {
 
         for(i=1;i<strs.Length;i++){
             name = strs[i];
-            if(name.Length<arr.Length){
+            if(name.Length<prefixLength){
                 templength = name.Length;
             }else{
-                templength =arr.Length;
+                templength = prefixLength;
             }
 
             for(j=0;j<templength;j++){
@@ -22,11 +22,11 @@ public class Solution {
                 }
             }
 
-            templength=j;
-            if(templength<arr.Length){
-                Array.Resize(ref arr, templength);
+            prefixLength=j;
+            if(prefixLength==0){
+                return "";
             }
         }
-        return new string(arr);
+        return new string(arr, 0, prefixLength);
     }
 }
